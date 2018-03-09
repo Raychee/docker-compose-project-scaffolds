@@ -1,0 +1,13 @@
+version: "3"
+
+
+# The master stage docker compose file is for deployment in production:
+# 1. Add "restart:always" kind of configs that handle fail-over
+# 2. Customize the command arguments for online production
+# 3. Mount the volumes of the dbs to the destination for online production
+# 4. DO NOT mount the source code directory into the service's container
+
+
+services:
+  example_web_service:
+    restart: always

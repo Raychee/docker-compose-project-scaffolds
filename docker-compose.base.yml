@@ -1,0 +1,26 @@
+version: "3"
+
+
+# This is the base docker compose config. The main purpose is to:
+# 1. List all of the services & dbs in the system
+# 2. Specify the docker image / build context for every service
+# 3. Make sure all the components are in the same virtual network "project"
+# 4. Make sure all the components are under the same environment variables "PROJECT_*"
+# 5. Make sure all the components have the right dependencies on each other
+# 6. NO volume mounting
+# 7. NO port publishing for internal components
+# 8. NO "restart:always" kind of configs that handle fail-over
+
+
+services:
+  example_web_service:
+    build:
+      context: example_web_service
+    networks:
+      project:
+    environment:
+      - PROJECT_RUNTIME_STAGE=${PROJECT_RUNTIME_STAGE}
+      - PROJECT_RUNTIME_MODE=${PROJECT_RUNTIME_MODE}
+
+networks:
+  project:

@@ -1,0 +1,3 @@
+dependencies:  # the packages that can be installed by conda (preferred over pip because of better compatibility)
+- pip:  # the packages that can only be installed by pip
+  - sanic==0.7.0
